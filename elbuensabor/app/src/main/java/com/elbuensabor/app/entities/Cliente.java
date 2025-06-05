@@ -5,7 +5,6 @@ import org.hibernate.envers.Audited;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -14,29 +13,27 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name="sucursalEmpresa")
+@Table(name = "cliente")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @Audited
-public class SucursalEmpresa extends Base {
+public class Cliente extends Base {
 
-    @Column(name="nombre")
+    @Column(name = "nombre")
     private String nombre;
 
-    @Column(name="horarioApertura")
-    private String horarioApertura;
+    @Column(name = "apellido")
+    private String apellido;
 
-    @Column(name="horarioCierre")
-    private String horarioCierre;
+    @Column(name = "telefono")
+    private String telefono;
 
-    @ManyToOne
-    @JoinColumn(name="empresa_id")
-    private Empresa empresa;
+    @Column(name = "email")
+    private String email;
 
     @OneToOne
-    @JoinColumn(name="domicilio_id")
-    private Domicilio domicilio;
-    
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
 }

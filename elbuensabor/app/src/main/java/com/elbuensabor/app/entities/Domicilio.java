@@ -14,29 +14,26 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name="sucursalEmpresa")
+@Table(name="domicilio")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @Audited
-public class SucursalEmpresa extends Base {
+public class Domicilio extends Base{
+    @Column(name="calle")
+    private String calle;
 
-    @Column(name="nombre")
-    private String nombre;
+    @Column(name="numero")
+    private int numero;
 
-    @Column(name="horarioApertura")
-    private String horarioApertura;
+    @Column(name="codigoPostal")
+    private int codigoPostal;
 
-    @Column(name="horarioCierre")
-    private String horarioCierre;
+    @OneToOne(mappedBy="domicilio")
+    private SucursalEmpresa sucursalEmpresa;
 
     @ManyToOne
-    @JoinColumn(name="empresa_id")
-    private Empresa empresa;
-
-    @OneToOne
-    @JoinColumn(name="domicilio_id")
-    private Domicilio domicilio;
-    
+    @JoinColumn(name="localidad_id")
+    private Localidad localidad;
 }
