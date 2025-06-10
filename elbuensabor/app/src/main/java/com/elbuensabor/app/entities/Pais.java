@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.hibernate.envers.Audited;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
@@ -26,6 +27,6 @@ public class Pais extends Base{
     @Column(name="nombre")
     private String nombre;
 
-    @OneToMany(mappedBy="pais")
+    @OneToMany(mappedBy="pais", cascade=CascadeType.ALL, orphanRemoval=true)
     private List<Provincia> provincias = new ArrayList<>();
 }

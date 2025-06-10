@@ -2,6 +2,7 @@ package com.elbuensabor.app.entities;
 
 import org.hibernate.envers.Audited;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
@@ -36,4 +37,8 @@ public class Cliente extends Base {
     @OneToOne
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
+
+    @OneToOne
+    @JoinColumn(name= "domicilio_id")
+    private Domicilio domicilio;
 }

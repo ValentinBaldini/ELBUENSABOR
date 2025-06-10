@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.envers.Audited;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
@@ -27,10 +28,10 @@ public class Provincia extends Base{
     @Column(name="nombre")
     private String nombre;
 
-    @OneToMany(mappedBy="provincia")
+    @OneToMany(mappedBy="provincia", cascade=CascadeType.ALL, orphanRemoval=true)
     private List<Localidad> localidades;
 
-    @ManyToOne
+    @ManyToOne(optional=false)
     @JoinColumn(name="pais_id")
     private Pais pais;
 }
