@@ -1,11 +1,16 @@
 package com.elbuensabor.app.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hibernate.envers.Audited;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -35,8 +40,10 @@ public class SucursalEmpresa extends Base {
     @JoinColumn(name="empresa_id")
     private Empresa empresa;
 
-    @OneToOne
+    @OneToOne(cascade=CascadeType.ALL, orphanRemoval=true)
     @JoinColumn(name="domicilio_id")
     private Domicilio domicilio;
     
+    @OneToMany(mappedBy="sucursalEmpresa")
+    private List<Usuario> usuarios = new ArrayList<>();
 }

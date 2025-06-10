@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.hibernate.envers.Audited;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
@@ -45,7 +46,7 @@ public class ArticuloManufacturado extends Base{
     @JoinColumn(name="categoriaArticuloManufacturado_id")
     private CategoriaArticuloManufacturado categoriaArticuloManufacturado;
 
-    @OneToMany(mappedBy = "articuloManufacturado")
+    @OneToMany(mappedBy = "articuloManufacturado", cascade=CascadeType.ALL, orphanRemoval=true)
     private List<ImagenArticuloManufacturado> imagenesArticulosManufacturados;
 
     /*@OneToMany(mappedBy="articuloManufacturado")

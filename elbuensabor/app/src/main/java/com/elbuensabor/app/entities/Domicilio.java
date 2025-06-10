@@ -33,7 +33,7 @@ public class Domicilio extends Base{
     @OneToOne(mappedBy="domicilio")
     private SucursalEmpresa sucursalEmpresa;
 
-    @ManyToOne
+    @ManyToOne(optional=false)
     @JoinColumn(name="localidad_id")
     private Localidad localidad;
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.envers.Audited;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
@@ -31,6 +32,6 @@ public class CategoriaArticulo extends Base {
     @JoinColumn(name = "categoria_padre_id")
     private CategoriaArticulo categoriaPadre;
 
-    @OneToMany(mappedBy = "categoriaPadre")
+    @OneToMany(mappedBy = "categoriaPadre", cascade=CascadeType.ALL, orphanRemoval=true)
     private List<CategoriaArticulo> subcategorias;
 }
