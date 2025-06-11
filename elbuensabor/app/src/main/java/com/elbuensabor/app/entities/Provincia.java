@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.hibernate.envers.Audited;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -29,6 +31,7 @@ public class Provincia extends Base{
     private String nombre;
 
     @OneToMany(mappedBy="provincia", cascade=CascadeType.ALL, orphanRemoval=true)
+    @JsonIgnore
     private List<Localidad> localidades;
 
     @ManyToOne(optional=false)

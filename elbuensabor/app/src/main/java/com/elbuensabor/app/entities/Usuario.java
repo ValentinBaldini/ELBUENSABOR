@@ -2,6 +2,8 @@ package com.elbuensabor.app.entities;
 
 import org.hibernate.envers.Audited;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -39,6 +41,7 @@ public class Usuario extends Base {
     private Empleado empleado;
 
     @OneToOne(mappedBy = "usuario", cascade=CascadeType.ALL, orphanRemoval=true)
+    @JsonManagedReference
     private Cliente cliente;
 
     @ManyToOne
