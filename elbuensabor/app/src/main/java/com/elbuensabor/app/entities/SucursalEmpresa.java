@@ -5,6 +5,9 @@ import java.util.List;
 
 import org.hibernate.envers.Audited;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -42,8 +45,10 @@ public class SucursalEmpresa extends Base {
 
     @OneToOne(cascade=CascadeType.ALL, orphanRemoval=true)
     @JoinColumn(name="domicilio_id")
+    @JsonManagedReference
     private Domicilio domicilio;
     
     @OneToMany(mappedBy="sucursalEmpresa")
+    @JsonIgnore
     private List<Usuario> usuarios = new ArrayList<>();
 }
