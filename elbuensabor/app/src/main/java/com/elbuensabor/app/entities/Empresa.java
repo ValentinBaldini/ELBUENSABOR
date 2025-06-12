@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.hibernate.envers.Audited;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -34,5 +36,6 @@ public class Empresa extends Base{
     private int cuil;
 
     @OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private List <SucursalEmpresa> sucursalesEmpresa = new ArrayList<>();
 }

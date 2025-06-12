@@ -2,6 +2,8 @@ package com.elbuensabor.app.entities;
 
 import org.hibernate.envers.Audited;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -36,9 +38,10 @@ public class Cliente extends Base {
 
     @OneToOne
     @JoinColumn(name = "usuario_id")
+    @JsonBackReference
     private Usuario usuario;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name= "domicilio_id")
     private Domicilio domicilio;
 }

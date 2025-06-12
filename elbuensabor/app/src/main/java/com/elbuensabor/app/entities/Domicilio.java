@@ -2,6 +2,8 @@ package com.elbuensabor.app.entities;
 
 import org.hibernate.envers.Audited;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
@@ -31,6 +33,7 @@ public class Domicilio extends Base{
     private int codigoPostal;
 
     @OneToOne(mappedBy="domicilio")
+    @JsonBackReference
     private SucursalEmpresa sucursalEmpresa;
 
     @ManyToOne(optional=false)
