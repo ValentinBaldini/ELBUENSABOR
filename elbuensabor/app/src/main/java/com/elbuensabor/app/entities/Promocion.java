@@ -1,9 +1,14 @@
 package com.elbuensabor.app.entities;
 
 import java.time.LocalDate;
+import java.util.List;
+
 import org.hibernate.envers.Audited;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,5 +35,8 @@ public class Promocion {
 
     @Column(name="descuento")
     private double descuento;
+
+    @OneToMany(mappedBy = "promocion", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<PromocionDetalle> promocionDetalles;
 
 }

@@ -2,9 +2,16 @@ package com.elbuensabor.app.entities;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
+
 import org.hibernate.envers.Audited;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -50,5 +57,23 @@ public class PedidoVenta {
 
     @Column(name="fechaPedido")
     private LocalDate fechaPedido;
+
+    @OneToMany(mappedBy = "pedidoVenta", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<PedidoVentaDetalle> pedidoVentaDetalles;
+
+    @OneToMany(mappedBy = "pedidoVenta", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<FacturaVenta> facturasVenta;
+
+    @ManyToOne
+    @JoinColumn(name = "cliente_id", nullable = false)
+    private Cliente cliente;
+
+    @ManyToOne
+    @JoinColumn(name = "empleado_id", nullable = false)
+    private Empleado empleado;
+
+    @ManyToOne
+    @JoinColumn(name = "sucursalEmpresa_id", nullable = false)
+    private SucursalEmpresa sucursalEmpresa;
 
 }

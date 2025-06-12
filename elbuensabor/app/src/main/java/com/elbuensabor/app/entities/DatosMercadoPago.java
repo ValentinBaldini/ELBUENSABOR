@@ -1,8 +1,15 @@
 package com.elbuensabor.app.entities;
 
 import org.hibernate.envers.Audited;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -38,4 +45,9 @@ public class DatosMercadoPago {
 
     @Column(name="status_detail")
     private String status_detail;
+
+    @OneToOne
+    @JoinColumn(name = "facturaVenta_id")
+    @JsonBackReference
+    private FacturaVenta facturaVenta;
 }
