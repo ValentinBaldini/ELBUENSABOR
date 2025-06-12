@@ -14,58 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.elbuensabor.app.entities.Empresa;
-import com.elbuensabor.app.services.EmpresaService;
+import com.elbuensabor.app.services.EmpresaServiceImpl;
 
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping(path = "api/v1/empresa")
-public class EmpresaController {
-
-    @Autowired
-    private EmpresaService empresaService;
-
-    @GetMapping("")
-    public ResponseEntity<?> getAll() {
-        try {
-            return ResponseEntity.status(HttpStatus.OK).body(empresaService.findAll());
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":\"Error, intente mas tarde.\"}");
-        }
-    }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<?> getOne(@PathVariable Long id) {
-        try {
-            return ResponseEntity.status(HttpStatus.OK).body(empresaService.findById(id));
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":\"Error, intente mas tarde.\"}");
-        }
-    }
-
-    @PostMapping("")
-    public ResponseEntity<?> save(@RequestBody Empresa empresa) {
-        try {
-            return ResponseEntity.status(HttpStatus.OK).body(empresaService.save(empresa));
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"error\":\"Error, intente mas tarde.\"}");
-        }
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<?> update(@PathVariable Long id, @RequestBody Empresa empresa) {
-        try {
-            return ResponseEntity.status(HttpStatus.OK).body(empresaService.update(id, empresa));
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"error\":\"Error, intente mas tarde.\"}");
-        }
-    }
-
-    @DeleteMapping("{id}")
-    public ResponseEntity<?> delete(@PathVariable Long id) {
-        try {
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(empresaService.delete(id));
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"error\":\"Error, intente mas tarde.\"}");
-        }
-    }
+public class EmpresaController extends BaseControllerImpl<Empresa, EmpresaServiceImpl>{
 }
