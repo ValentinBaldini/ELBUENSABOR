@@ -33,4 +33,8 @@ public class CategoriaArticulo extends Base {
 
     @OneToMany(mappedBy = "categoriaPadre")
     private List<CategoriaArticulo> subcategorias;
+
+    @OneToMany(mappedBy = "categoriaArticulo")
+    private List<ArticuloInsumo> articulosInsumo;
+
 }
