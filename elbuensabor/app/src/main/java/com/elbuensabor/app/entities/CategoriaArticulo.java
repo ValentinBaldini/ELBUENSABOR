@@ -34,4 +34,8 @@ public class CategoriaArticulo extends Base {
 
     @OneToMany(mappedBy = "categoriaPadre", cascade=CascadeType.ALL, orphanRemoval=true)
     private List<CategoriaArticulo> subcategorias;
+
+    @OneToMany(mappedBy = "categoriaArticulo")
+    private List<ArticuloInsumo> articulosInsumo;
+
 }

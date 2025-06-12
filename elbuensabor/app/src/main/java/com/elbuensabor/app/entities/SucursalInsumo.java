@@ -13,21 +13,23 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name="pedidoVentaDetalle")
+@Table(name="sucursalInsumo")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @Audited
-public class PedidoVentaDetalle {
-    
-    @Column(name="cantidad")
-    private double cantidad;
+public class SucursalInsumo {
 
-    @Column(name="subtotal")
-    private double subtotal;
+    @Column(name="stockActual")
+    private double stockActual;
 
-    @OneToMany(mappedBy = "pedidoVentaDetalle")
+    @Column(name="stockMinimo")
+    private double stockMinimo;
+
+    @Column(name="stockMaximo")
+    private double stockMaximo;
+
+    @OneToMany(mappedBy = "sucursalInsumo")
     private List<ArticuloInsumo> articulosInsumo;
-
 }
