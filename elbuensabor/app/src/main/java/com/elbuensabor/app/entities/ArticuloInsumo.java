@@ -43,7 +43,7 @@ public class ArticuloInsumo {
 
     @ManyToOne
     @JoinColumn(name = "categoriaArticulo_id", nullable = false)
-    private CategoriaArticulo categoriaArticulo;
+    private CategoriaArticulo categoriaArticulo; 
 
     @ManyToOne
     @JoinColumn(name = "sucursalInsumo_id", nullable = false)
