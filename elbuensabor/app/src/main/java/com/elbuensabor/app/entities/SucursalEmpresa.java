@@ -51,4 +51,7 @@ public class SucursalEmpresa extends Base {
     @OneToMany(mappedBy="sucursalEmpresa")
     @JsonIgnore
     private List<Usuario> usuarios = new ArrayList<>();
+
+    @OneToMany(mappedBy = "sucursalEmpresa", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<FacturaVenta> facturasVenta;
 }

@@ -49,6 +49,6 @@ public class ArticuloManufacturado extends Base{
     @OneToMany(mappedBy = "articuloManufacturado", cascade=CascadeType.ALL, orphanRemoval=true)
     private List<ImagenArticuloManufacturado> imagenesArticulosManufacturados;
 
-    /*@OneToMany(mappedBy="articuloManufacturado")
-    private List<ArticuloManufacturadoDetalle> articulosManufacturadosDetalle = new ArrayList<>();*/
+    @OneToMany(mappedBy="articuloManufacturado")
+    private List<ArticuloManufacturadoDetalle> articulosManufacturadosDetalle = new ArrayList<>();
 }

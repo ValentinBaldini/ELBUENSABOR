@@ -1,5 +1,7 @@
 package com.elbuensabor.app.entities;
 
+import java.util.List;
+
 import org.hibernate.envers.Audited;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -8,6 +10,7 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -44,4 +47,10 @@ public class Cliente extends Base {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name= "domicilio_id")
     private Domicilio domicilio;
+
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<PedidoVenta> pedidoVentas;
+
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<FacturaVenta> facturasVenta;
 }

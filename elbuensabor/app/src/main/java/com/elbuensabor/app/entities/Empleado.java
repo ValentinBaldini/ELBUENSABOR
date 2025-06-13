@@ -1,11 +1,14 @@
 package com.elbuensabor.app.entities;
 
+import java.util.List;
+
 import org.hibernate.envers.Audited;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -37,4 +40,7 @@ public class Empleado extends Base {
     @OneToOne
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
+
+    @OneToMany(mappedBy = "empleado", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<FacturaVenta> facturasVenta;
 }

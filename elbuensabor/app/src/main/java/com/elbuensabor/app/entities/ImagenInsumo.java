@@ -4,6 +4,7 @@ import org.hibernate.envers.Audited;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,4 +22,8 @@ public class ImagenInsumo extends Base{
 
     @Column(name="denominacion")
     private String denominacion;
+
+    @OneToOne(mappedBy="imagenInsumo")
+    private ArticuloInsumo articuloInsumo;
+
 }
