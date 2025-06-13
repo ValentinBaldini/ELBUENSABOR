@@ -1,0 +1,45 @@
+.users-container {
+  width: 100%;
+  height: 100vh;
+  background-color: wheat;
+}
+
+.div-users {
+  padding-left: 300px;
+  padding-top: 70px;
+  display: flex;
+  flex-direction: column;
+}
+
+.div-users > div {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px 0px 0px 10px;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 110px);
+}
+
+.table-users-container {
+  width: 100%;
+}
+
+.table-users-container > table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-users-container > table thead {
+  background-color: #222;
+  color: #fff;
+}
+
+.table-users-container > table thead th {
+  text-align: start;
+  padding: 5px;
+}
+
+.table-users-container > table tbody tr td {
+  text-align: start;
+  padding: 5px;
+}

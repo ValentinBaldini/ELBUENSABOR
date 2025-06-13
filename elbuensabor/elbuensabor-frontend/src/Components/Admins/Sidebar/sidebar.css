@@ -1,0 +1,48 @@
+.sidebar-container {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  width: 220px;
+  height: 100vh;
+  background-color: #222;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 12px;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.08);
+  z-index: 1000;
+}
+
+.ul-sidebar{
+    list-style-type: none;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.ul-sidebar li{
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-self: start;
+    align-items: center;
+    gap: 5px;
+}
+
+.admin-sidebar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    justify-content: center;
+}
+
+.hr-sidebar{
+    width: 100%;
+}
+
+.active-link{
+    color: rgb(255, 201, 25);
+}
