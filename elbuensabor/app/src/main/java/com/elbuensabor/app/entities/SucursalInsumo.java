@@ -19,7 +19,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Audited
-public class SucursalInsumo {
+public class SucursalInsumo extends Base{
 
     @Column(name="stockActual")
     private double stockActual;

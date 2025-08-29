@@ -1,5 +1,6 @@
 package com.elbuensabor.app.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.envers.Audited;
@@ -17,28 +18,28 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name="pedidoVentaDetalle")
+@Table(name = "pedidoVentaDetalle")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @Audited
-public class PedidoVentaDetalle {
-    
-    @Column(name="cantidad")
+public class PedidoVentaDetalle extends Base {
+
+    @Column(name = "cantidad")
     private double cantidad;
 
-    @Column(name="subtotal")
+    @Column(name = "subtotal")
     private double subtotal;
 
     @OneToMany(mappedBy = "pedidoVentaDetalle")
-    private List<ArticuloInsumo> articulosInsumo;
+    private List<ArticuloInsumo> articulosInsumo = new ArrayList<>();
 
-    @OneToMany(mappedBy = "articuloManufacturado", cascade=CascadeType.ALL, orphanRemoval=true)
-    private List<ArticuloManufacturado> articulosManufacturados;
+    @OneToMany(mappedBy = "pedidoVentaDetalle", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ArticuloManufacturado> articulosManufacturados = new ArrayList<>();
 
-    @OneToMany(mappedBy = "promocion", cascade=CascadeType.ALL, orphanRemoval=true)
-    private List<Promocion> promociones;
+    @OneToMany(mappedBy = "pedidoVentaDetalle", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Promocion> promociones = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "pedidoVenta_id", nullable = false)

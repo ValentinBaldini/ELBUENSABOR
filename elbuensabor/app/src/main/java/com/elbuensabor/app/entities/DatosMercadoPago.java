@@ -23,7 +23,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Audited
-public class DatosMercadoPago {
+public class DatosMercadoPago extends Base{
 
     @Column(name="date_created")
     private String date_created;

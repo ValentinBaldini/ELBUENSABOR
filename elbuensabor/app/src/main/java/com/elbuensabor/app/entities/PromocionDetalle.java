@@ -21,7 +21,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Audited
-public class PromocionDetalle {
+public class PromocionDetalle extends Base{
 
     @Column(name="cantidad")
     private int cantidad;

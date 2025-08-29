@@ -21,7 +21,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Audited
-public class FacturaVentaDetalle {
+public class FacturaVentaDetalle extends Base{
     
     @Column(name="cantidad")
     private Integer cantidad;

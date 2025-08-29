@@ -3,8 +3,12 @@ const Products = () => {
     <div className="users-container">
       <div className="div-users">
         <div>
-          <div>
+          <div className="header-title">
             <h1>Productos</h1>
+            <button>
+              <span className="material-icons">add</span>Agregar
+              producto
+            </button>
           </div>
           <div className="table-users-container">
             <table>

@@ -16,7 +16,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Audited
-public class UnidadMedida {
+public class UnidadMedida extends Base{
 
     @Column(name="denominacion")
     private String denominacion;

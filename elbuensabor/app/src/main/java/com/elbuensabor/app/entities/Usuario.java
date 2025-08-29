@@ -33,6 +33,9 @@ public class Usuario extends Base {
     @Column(name = "username")
     private String username;
 
+    @Column(name = "password")
+    private String password;
+
     @Enumerated(EnumType.STRING)
     @Column(name = "rol")
     private Rol perfil;

@@ -22,33 +22,33 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name="facturaVenta")
+@Table(name = "facturaVenta")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @Audited
-public class FacturaVenta {
+public class FacturaVenta extends Base {
 
-    @Column(name="fechaFacturacion")
+    @Column(name = "fechaFacturacion")
     private String fechaFacturacion;
 
-    @Column(name="numeroComprobante")
+    @Column(name = "numeroComprobante")
     private String numeroComprobante;
-    
-    @Column(name="formaPago")
+
+    @Column(name = "formaPago")
     private FormaPago formaPago;
 
-    @Column(name="subtotal")
+    @Column(name = "subtotal")
     private BigDecimal subtotal;
 
-    @Column(name="descuento")
+    @Column(name = "descuento")
     private BigDecimal descuento;
 
-    @Column(name="gastosEnvio")
+    @Column(name = "gastosEnvio")
     private BigDecimal gastosEnvio;
 
-    @Column(name="totalVenta")
+    @Column(name = "totalVenta")
     private BigDecimal totalVenta;
 
     @OneToMany(mappedBy = "facturaVenta", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -62,8 +62,15 @@ public class FacturaVenta {
     @JoinColumn(name = "cliente_id", nullable = false)
     private Cliente cliente;
 
-    @OneToOne(mappedBy = "facturaVenta", cascade=CascadeType.ALL, orphanRemoval=true)
+    @OneToOne(mappedBy = "facturaVenta", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private DatosMercadoPago datosMercadoPago;
 
+    @ManyToOne
+    @JoinColumn(name = "empleado_id")
+    private Empleado empleado;
+
+    @ManyToOne
+    @JoinColumn(name = "sucursalEmpresa_id")
+    private SucursalEmpresa sucursalEmpresa;
 }

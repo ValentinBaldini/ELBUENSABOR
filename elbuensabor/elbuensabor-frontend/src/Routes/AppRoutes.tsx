@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
 import ClientRoutes from "./ClientRoutes";
-import Navbar from "../Components/Clients/Navbar/Navbar";
+import Navbar from "../Components/Navbar/Navbar";
 import AdminRoutes from "./AdminRoutes";
 
 const AppRoutes = () => {

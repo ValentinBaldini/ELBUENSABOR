@@ -13,24 +13,24 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name="articuloInsumo")
+@Table(name = "articuloInsumo")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @Audited
-public class ArticuloInsumo {
+public class ArticuloInsumo extends Base {
 
-    @Column(name="denominacion")
+    @Column(name = "denominacion")
     private String denominacion;
 
-    @Column(name="precioCompra")
+    @Column(name = "precioCompra")
     private double precioCompra;
 
-    @Column(name="precioVenta")
+    @Column(name = "precioVenta")
     private double precioVenta;
 
-    @Column(name="esParaElaborar")
+    @Column(name = "esParaElaborar")
     private boolean esParaElaborar;
 
     @ManyToOne
@@ -38,16 +38,22 @@ public class ArticuloInsumo {
     private UnidadMedida unidadMedida;
 
     @OneToOne
-    @JoinColumn(name="imagenInsumo_id")
+    @JoinColumn(name = "imagenInsumo_id")
     private ImagenInsumo imagenInsumo;
 
     @ManyToOne
     @JoinColumn(name = "categoriaArticulo_id", nullable = false)
-    private CategoriaArticulo categoriaArticulo; 
+    private CategoriaArticulo categoriaArticulo;
 
     @ManyToOne
     @JoinColumn(name = "sucursalInsumo_id", nullable = false)
     private SucursalInsumo sucursalInsumo;
 
+    @ManyToOne
+    @JoinColumn(name = "facturaVentaDetalle_id")
+    private FacturaVentaDetalle facturaVentaDetalle;
 
+    @ManyToOne
+    @JoinColumn(name = "pedidoVentaDetalle_id")
+    private PedidoVentaDetalle pedidoVentaDetalle;
 }

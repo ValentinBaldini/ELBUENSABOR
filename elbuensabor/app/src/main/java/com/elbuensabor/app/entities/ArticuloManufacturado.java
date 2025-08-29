@@ -9,6 +9,7 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -17,38 +18,41 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
 @Entity
-@Table(name="articuloManufacturado")
+@Table(name = "articuloManufacturado")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @Audited
-public class ArticuloManufacturado extends Base{
+public class ArticuloManufacturado extends Base {
 
-    @Column(name="denominacion")
+    @Column(name = "denominacion")
     private String denominacion;
 
-    @Column(name="descripcion")
+    @Column(name = "descripcion")
     private String descripcion;
 
-    @Column(name="precioVenta")
+    @Column(name = "precioVenta")
     private double precioVenta;
 
-    @Column(name="precioCosto")
+    @Column(name = "precioCosto")
     private double precioCosto;
 
-    @Column(name="tiempoEstimado")
+    @Column(name = "tiempoEstimado")
     private int tiempoEstimado;
 
     @OneToOne
-    @JoinColumn(name="categoriaArticuloManufacturado_id")
+    @JoinColumn(name = "categoriaArticuloManufacturado_id")
     private CategoriaArticuloManufacturado categoriaArticuloManufacturado;
 
-    @OneToMany(mappedBy = "articuloManufacturado", cascade=CascadeType.ALL, orphanRemoval=true)
+    @OneToMany(mappedBy = "articuloManufacturado", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ImagenArticuloManufacturado> imagenesArticulosManufacturados;
 
-    @OneToMany(mappedBy="articuloManufacturado")
+    @OneToMany(mappedBy = "articuloManufacturado")
     private List<ArticuloManufacturadoDetalle> articulosManufacturadosDetalle = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "pedidoVentaDetalle_id")
+    private PedidoVentaDetalle pedidoVentaDetalle;
 }

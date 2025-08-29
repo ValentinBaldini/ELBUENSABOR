@@ -25,7 +25,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Audited
-public class PedidoVenta {
+public class PedidoVenta extends Base{
    
     // revisar Type
     @Column(name="horaEstimadaFinalizacion")
